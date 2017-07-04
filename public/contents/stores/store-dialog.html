@@ -1,0 +1,25 @@
+<dialog-template title="{{dialogHeader}}" add-class="add-new-store">
+    <form name="addNewStoreForm" class="add-new-store-form">
+        <md-input-container>
+            <label>UUID</label>
+            <input ng-model="store.UUID" required ng-disabled="savingFlag" />
+        </md-input-container>
+        <md-input-container>
+            <label>Name</label>
+            <input ng-model="store.Name" required ng-disabled="savingFlag" />
+        </md-input-container>
+        <md-input-container>
+            <label>Address</label>
+            <input ng-model="store.Address" ng-disabled="savingFlag" />
+        </md-input-container>
+        <md-input-container>
+            <label>Contact Number</label>
+            <input ng-model="store.ContactNumber" ng-disabled="savingFlag" />
+        </md-input-container>
+        <div class="modal-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="closeDialog();" ng-disabled="savingFlag">Close</button>
+            <button type="submit" class="btn btn-primary" ng-click="save(addNewStoreForm.$valid);" ng-disabled="savingFlag">Save</button>
+        </div>
+    </form>
+</dialog-template>

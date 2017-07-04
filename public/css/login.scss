@@ -1,0 +1,23 @@
+.login-page, .register-page {
+    background: #d2d6de;
+    display: flex;
+}
+
+.invalid-credentials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #f00;
+    margin-bottom: 5px;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    md-progress-circular {
+        margin-right: 5px;
+    }
+}

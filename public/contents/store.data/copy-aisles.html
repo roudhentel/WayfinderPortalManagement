@@ -1,0 +1,10 @@
+<dialog-template title="Copy Aisles" add-class="">
+    <form id="uploadForm" enctype="multipart/form-data">
+        <select ng-model="dialogObj.selectedMap" ng-options="map.Id as map.Filename for map in listMapModified"></select>
+    </form>
+
+    <div class="modal-footer">
+        <md-progress-linear md-mode="indeterminate" ng-show="dialogObj.savingFlag"></md-progress-linear>
+        <button type="button" class="btn btn-primary" ng-click="copyAisles($event);" ng-disabled="dialogObj.savingFlag">Copy</button>
+    </div>
+</dialog-template>

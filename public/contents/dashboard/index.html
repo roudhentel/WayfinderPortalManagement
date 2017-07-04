@@ -1,0 +1,29 @@
+<md-content class="md-padding dashboard" layout-xs="column" layout="row">
+    <md-card md-theme="default" md-theme-watch="" ng-repeat="item in currentList | filter: filterObj">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{item.Name}}</span>
+                <span class="md-subhead">{{item.Address || '-'}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="md-media-xl card-media">
+                <!--<img src="" alt="">-->
+                <img class="img-responsive" ng-src="{{getImage(item)}}" alt="{{item.Name}}" ng-if="item.DefaultImage">
+
+            </div>
+
+            <md-card-actions layout="column">
+                <md-button class="md-icon-button" aria-label="Favorite"
+                    ng-click="updateFavorite(item);">
+                    <!--<md-icon md-svg-icon=""></md-icon>-->
+                    <i class="fa " ng-class="item.IsFavorite ? 'fa-heart' : 'fa-heart-o'"></i>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Go"
+                    ui-sref="home.store.data({store: item.StoreId, from: 'dashboard'})">
+                    <i class="fa fa-arrow-right"></i>
+                </md-button>
+            </md-card-actions>
+        </md-card-content>
+    </md-card>
+</md-content>

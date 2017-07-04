@@ -1,0 +1,10 @@
+<dialog-template title="Photo" add-class="">
+    <form id="uploadForm" enctype="multipart/form-data">
+        <md-progress-circular class="md-hue-2" md-diameter="10px" ng-show="loadingFlag"></md-progress-circular>
+        <input type="file" id="fileInput" ng-show="!loadingFlag" accept="image/jpeg" />
+        <!--<button type="submit" ng-click="upload();">Load</button>-->
+    </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="upload();">Upload</button>
+    </div>
+</dialog-template>

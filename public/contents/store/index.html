@@ -1,0 +1,59 @@
+<section class="content-header">
+    <h1>
+        {{store.Name}}
+    </h1>
+    <ol class="breadcrumb">
+        <li ng-if="params.from === 'stores'">
+            <a ui-sref="home.stores({reloadData: true})"><i class="fa fa-television"></i> Stores</a>
+        </li>
+        <li ng-if="params.from === 'dashboard'">
+            <a ui-sref="home.dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li class="active">{{store.Name}}</li>
+    </ol>
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="img-responsive" ng-src="{{displayedPhoto}}" alt="{{store.Name}}">
+                    <p class="text-muted text-center">{{store.Address}}</p>
+                    <!--<a href="#" class="btn btn-primary btn-block"><b>Change Featured Photo</b></a>-->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+            <!-- About Me Box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">About</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong><i class="fa fa-info margin-r-5"></i> UUID</strong>
+                    <p class="text-muted"> {{store.UUID}}</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+                    <p class="text-muted">{{store.Address}}</p>
+                    <hr>
+                    <strong><i class="fa fa-phone margin-r-5"></i> Contact Number</strong>
+                    <p class="text-muted">{{store.ContactNumber}}</p>
+                    <hr>
+                    <strong ui-sref="home.store.analytics" style="cursor: pointer;"><i class="fa fa-bar-chart margin-r-5"></i> Search analytics</strong>
+                    <!--<p class="text-muted">{{store.ContactNumber}}</p>-->
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div ui-view></div>
+        </div>
+    </div>
+</section>

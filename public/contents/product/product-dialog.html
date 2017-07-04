@@ -1,0 +1,51 @@
+<dialog-template title="{{header}}" add-class="add-new-product">
+    <form name="addNewProductForm" class="add-new-product-form">
+        <md-input-container>
+            <label>Aisle Number</label>
+            <!--<input type="text" ng-model="product.AisleNumber" ng-disabled="savingFlag" />
+            <select ng-model="product.AisleNumber" ng-options="aisle.Id as aisle.Description for aisle in listAisle">
+
+            </select>-->
+
+            <md-select name="ProductAisle" ng-model="product.AisleNumber" multiple="">
+                <md-optgroup label="{{map.Filename}}" ng-repeat="map in listMaps">
+                    <md-option value="{{aisle.Id}}" ng-repeat="aisle in listAisle | filter: {MapId: map.Id}">{{aisle.Description}}</md-option>
+                </md-optgroup>
+                
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Name</label>
+            <input type="text" ng-model="product.Name" required ng-disabled="savingFlag" />
+        </md-input-container>
+        <div layout="row" class="category">
+            <div layout="column" class="sel-category">
+                <md-input-container>
+                    <label>Category</label>
+                    <md-select name="ProductCategory" ng-model="product.CategoryId">
+                        <md-option value="{{cat.Id}}" ng-repeat="cat in listCategories">{{cat.Name}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div layout="column" class="add-category">
+                <a ng-click="addNewCategory($event);">
+                    <i class="fa fa-plus-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <md-input-container>
+            <label>Occasion</label>
+            <input type="text" ng-model="product.Occasion" ng-disabled="savingFlag" />
+        </md-input-container>
+        <md-input-container>
+            <label>Comment</label>
+            <input type="text" ng-model="product.Comments">
+        </md-input-container>
+        <div class="modal-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="closeDialog();" ng-disabled="savingFlag">Close</button>
+            <button type="submit" class="btn btn-primary" ng-click="save(addNewProductForm.$valid, $event);" ng-disabled="savingFlag">Save</button>
+        </div>
+    </form>
+</dialog-template>

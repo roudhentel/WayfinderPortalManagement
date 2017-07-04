@@ -1,0 +1,38 @@
+<div class="register-box-body">
+    <p class="login-box-msg">Register a new membership</p>
+
+    <form name="registerForm">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Full name" required ng-model="user.Fullname" ng-disabled="savingFlag">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="Email" required ng-model="user.Email" ng-disabled="savingFlag">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" required ng-model="user.Password" ng-disabled="savingFlag">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Retype password" required ng-model="user.RePassword" ng-disabled="savingFlag">
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="checkbox icheck">
+                    <label>
+              <input type="checkbox" ng-model="user.IsAgree"  ng-disabled="savingFlag"> I agree to the <a href="#">terms</a>
+            </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6 login-btn">
+                <md-progress-circular class="md-hue-2" md-diameter="12px" ng-show="savingFlag"></md-progress-circular>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" ng-click="register(registerForm.$valid, $event);" ng-disabled="!user.IsAgree">Register</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+    <a ui-sref="main.login" class="text-center">I already have a membership</a>
+</div>

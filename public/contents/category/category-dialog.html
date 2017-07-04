@@ -1,0 +1,13 @@
+<dialog-template title="{{header}}" add-class="add-new-category">
+    <form name="addNewCategoryForm" class="add-new-category-form">
+        <md-input-container>
+            <label>Name</label>
+            <input type="text" ng-model="category.Name" required ng-disabled="savingFlag" />
+        </md-input-container>
+        <div class="modal-footer">
+            <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+            <button type="button" class="btn" ng-click="closeDialog();" ng-disabled="savingFlag">Close</button>
+            <button type="submit" class="btn btn-primary" ng-click="save(addNewCategoryForm.$valid, $event);" ng-disabled="savingFlag">Save</button>
+        </div>
+    </form>
+</dialog-template>

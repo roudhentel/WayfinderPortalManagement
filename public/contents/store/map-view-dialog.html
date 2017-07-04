@@ -1,0 +1,27 @@
+<dialog-template title="Map View" add-class="map-view-dialog">
+    <div class="body">
+        <div class="header">
+            <label>Map :</label>
+            <select class="form-control map" ng-model="selMap" ng-change="changeMap(selMap);" ng-options="map.Id as map.Filename for map in listMaps"
+                ng-disabled="disableButton"> </select>
+
+            <label>Routes :</label>
+            <select class="form-control routes" ng-model="selectedRoute">
+                <optgroup>
+                    <option ng-repeat="r in listRoutes | filter: {MapId: selMap}" ng-value="r">{{$index + 1}}</option>
+                </optgroup>
+                <optgroup label="Aisle's route(s)">
+                    <option ng-repeat="r in productAisleRoutes" ng-value="r">{{$index + 1}}</option>
+                </optgroup>
+            </select>
+            <button type="button" class="btn btn-primary" ng-click="viewOnMap(selectedRoute);" ng-disabled="disableButton">View on map</button>
+            <button type="button" class="btn btn-primary" ng-disabled="disableButton" ng-click="addRoute($event)">Add route</button>
+            <button type="button" class="btn btn-primary" ng-disabled="disableButton || !selectedRoute.ProductId" ng-click="editRoute($event, selectedRoute)">Edit route</button>
+        </div>
+        <div class="content">
+            <!--<img ng-src="{{getDisplayMap()}}" alt="Map">-->
+            <svg id="svg_map" preserveAspectRatio="xMaxYMax">
+            </svg>
+        </div>
+    </div>
+</dialog-template>

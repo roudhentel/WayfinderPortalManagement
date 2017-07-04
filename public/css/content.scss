@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    
+    .main-view {
+        width: 100%;
+    }
+
+    .sub-view {
+        height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .modal-body {
+        overflow: hidden;
+    }
+
+    .modal-header {
+        background: $background-default;
+        h4 {
+            color: $color-default;
+            font-weight: bold;
+        }
+    }
+
+    .modal-footer {
+        padding: 10px 0 10px 0;
+        button {
+            border-radius: 0;
+        }
+    }
+
+    .btn-primary {
+        background-color: $background-default;
+        border-color: $background-default;
+        color: $color-default;
+        font-weight: bold;
+
+        &:hover, &:active, &:focus {
+            background-color: $background-default;
+            border-color: $background-default;
+            color: $color-default;
+        }
+    }
+
+    md-progress-linear { 
+        margin-bottom: 2px !important;
+        .md-container {
+            background-color: rgba(175, 31, 36, 0.2);
+        }
+
+        .md-bar {
+            background-color: $background-default;
+        }
+    }
+
+    .md-dialog-container {
+        z-index: 810;
+    }
+
+    .md-select-menu-container, .md-select-backdrop {
+        z-index: 811;
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active, 
+    .box.box-primary {
+        border-top-color: $background-default;
+    }    
+
+    /* start 'enter' transition on main view */
+    .ng-enter {
+        /* transition on enter for .5s */
+        transition: .5s;
+
+        /* start with opacity 0 (invisible) */
+        opacity: 0;
+    }
+
+    /* end 'enter' transition on main view */
+    .ng-enter-active {
+        /* end with opacity 1 (fade in) */
+        opacity: 1;
+    }
+
+    dialog-template {
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,14 @@
+<dialog-template title="{{header}}" add-class="add-route-dialog">
+    <div class="body">
+        <div class="content">
+            <div class="map-container-add-route">
+                <svg id="svg" preserveAspectRatio="xMaxYMax">
+                </svg>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn" ng-click="clearDirection();">Clear</button>
+            <button type="button" class="btn btn-primary" ng-click="addRoute($event);" >Save</button>
+        </div>
+    </div>
+</dialog-template>

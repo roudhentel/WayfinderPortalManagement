@@ -1,0 +1,41 @@
+<dialog-template title="Import" add-class="">
+    <form id="uploadForm" enctype="multipart/form-data" ng-if="!isTableVisible">
+        <md-progress-circular class="md-hue-2" md-diameter="10px" ng-show="loadingFlag"></md-progress-circular>
+        <input type="file" name="fileInput" onchange="angular.element(this).scope().upload();" ng-show="!loadingFlag" />
+        <!--<button type="submit" ng-click="upload();">Load</button>-->
+    </form>
+    <form id="saveForm" ng-if="isTableVisible">
+        <div>
+            <label for="Sheet Number">Sheet Number : </label>
+            <select ng-model="importDialog.sheetNumber" ng-change="removeAllSelected();">
+                    <option value="">All</option>
+                    <option ng-repeat="item in range(1, importDialog.totalSheet, 1)">{{item}}</option>
+            </select>
+        </div>
+        <table id="tblListStore" class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    <input type="checkbox" ng-model="importDialog.isCheckedAll" ng-change="checkAll();" />
+                </th>
+                <th>UUID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact Number</th>
+            </tr>
+            <tr ng-repeat="item in listImport | filter: {SheetNumber: importDialog.sheetNumber}">
+                <td>
+                    <input type="checkbox" ng-model="item.isChecked" ng-change="importDialog.isCheckedAll = false;" />
+                </td>
+                <td>{{item.UUID}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Address}}</td>
+                <td>{{item.ContactNumber}}</td>
+            </tr>
+        </table>
+    </form>
+    <div class="modal-footer" ng-if="isTableVisible">
+        <button type="button" class="btn" ng-click="loadFile();">Load Another File</button>
+        <button type="button" class="btn" ng-click="import(1, $event);">Import All</button>
+        <button type="button" class="btn btn-primary" ng-click="import(0, $event);">Import Selected</button>
+    </div>
+</dialog-template>

@@ -1,0 +1,46 @@
+<dialog-template title="Import" add-class="">
+    <form id="uploadForm" enctype="multipart/form-data" ng-if="!isTableVisible">
+        <md-progress-circular class="md-hue-2" md-diameter="10px" ng-show="loadingFlag"></md-progress-circular>
+        <input type="file" name="fileInput" onchange="angular.element(this).scope().upload();" ng-show="!loadingFlag" />
+        <!--<button type="submit" ng-click="upload();">Load</button>-->
+    </form>
+    <form id="saveForm" ng-if="isTableVisible">
+        <fieldset ng-disabled="savingFlag">
+            <div>
+                <label for="Sheet Number">Sheet Number : </label>
+                <select ng-model="importDialog.sheetNumber" ng-change="removeAllSelected();">
+                    <option value="">All</option>
+                    <option ng-repeat="item in range(1, importDialog.totalSheet, 1)">{{item}}</option>
+            </select>
+            </div>
+            <table id="tblListStore" class="table table-bordered table-striped">
+                <tr>
+                    <th>
+                        <input type="checkbox" ng-model="importDialog.isCheckedAll" ng-change="checkAll();" />
+                    </th>
+                    <th>Aisle Number</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Occasion</th>
+                    <th>Comments</th>
+                </tr>
+                <tr ng-repeat="item in listImport | filter: {SheetNumber: importDialog.sheetNumber}">
+                    <td>
+                        <input type="checkbox" ng-model="item.isChecked" ng-change="importDialog.isCheckedAll = false;" />
+                    </td>
+                    <td>{{item.AisleDescription}}</td>
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Category}}</td>
+                    <td>{{item.Occasion}}</td>
+                    <td>{{item.Comment}}</td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div class="modal-footer" ng-if="isTableVisible">
+        <md-progress-linear md-mode="indeterminate" ng-show="savingFlag"></md-progress-linear>
+        <button type="button" class="btn" ng-click="loadFile();" ng-disabled="savingFlag">Load Another File</button>
+        <button type="button" class="btn" ng-click="import(1, $event);" ng-disabled="savingFlag">Import All</button>
+        <button type="button" class="btn btn-primary" ng-click="import(0, $event);" ng-disabled="savingFlag">Import Selected</button>
+    </div>
+</dialog-template>

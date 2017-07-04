@@ -1,0 +1,120 @@
+// .virtualRepeatdemoInfiniteScroll #vertical-container {
+//   height: 292px;
+//   width: 100%;
+//   max-width: 400px; }
+
+// .virtualRepeatdemoInfiniteScroll .repeated-item {
+//   border-bottom: 1px solid #ddd;
+//   box-sizing: border-box;
+//   height: 40px;
+//   padding-top: 10px; }
+
+// .virtualRepeatdemoInfiniteScroll md-content {
+//   margin: 16px; }
+
+// .virtualRepeatdemoInfiniteScroll md-virtual-repeat-container {
+//   border: solid 1px grey; }
+
+// .virtualRepeatdemoInfiniteScroll .md-virtual-repeat-container .md-virtual-repeat-offsetter div {
+//   padding-left: 16px; }
+
+.dashboard {
+  display: block;
+
+  md-card {
+    display: inline-block;
+
+    &:hover, &:focus, &:active {
+        transition: 0.1s;
+        box-shadow: 0 0 10px grey;
+        -webkit-transform: scale(1.06);
+        transform: scale(1.02);
+        cursor: pointer;
+
+        .md-headline {
+          border-color: $background-default;
+          //color: #FFF;
+        }
+    }
+
+    md-card-title {
+      padding: 10px 10px;
+      .md-headline {
+        background: #f7f7f7;
+        padding: 5px;
+        border: 1px solid #d6d6d6;
+        font-weight: 100;
+      }
+
+      .md-subhead {
+        padding-top: 0 !important;
+        padding: 5px;
+        font-style: italic;
+      }
+    }
+    
+    md-card-content {
+      md-card-actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .md-icon-button {
+          font-size: 20px;
+          color: grey;
+          i.fa-heart {
+            color: #F44336;
+          }
+        }
+      }
+      .md-media-xl {
+        height: 240px;
+        width: 400px; 
+
+        img {
+          height: 100%;
+          width: 100%;
+          box-shadow: 0 0 8px #dedede;
+          border: 2px groove #e0e0e0;
+        }
+      }
+    }
+  }
+}
+
+// .virtualRepeatdemoInfiniteScroll {
+//   md-content {
+//     margin: 16px;
+//   }
+//   md-virtual-repeat-container {
+//     border: solid 1px grey; 
+//   }
+//   #vertical-container {
+//     width: 100%;
+//   }
+//   .md-virtual-repeat-container {
+//     .md-virtual-repeat-offsetter {
+//       display: block;
+//       height: 100%;
+
+//       div {
+//         padding-left: 16px;
+//         display: inline-block;
+//         width: 470px;
+//         height: 298px;
+//         border: 1px solid black;
+//       }
+//     }
+//   }
+//   .repeated-item {
+//     border-bottom: 1px solid #ddd;
+//     box-sizing: border-box;
+//     height: 40px;
+//     padding-top: 10px; 
+//   }
+// }
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+*/

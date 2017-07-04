@@ -1,0 +1,66 @@
+<div class="box stores">
+    <div class="box-header">
+        <h3 class="box-title">Stores</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="new-store">
+            <a ng-click="showAddDialog($event);">
+                <i class="fa fa-plus-square"></i>
+                <span>Add store</span>
+            </a>
+            <a ng-click="showImportDialog($event);">
+                <i class="fa fa-download"></i>
+                <span>Import</span>
+            </a>
+        </div>
+
+        <table id="tblListStore" class="table table-bordered table-striped tbl-result">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>UUID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact Number</th>
+                    <th>Date Added</th>
+                    <th>Date Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in global.listStore" title="{{item.Name}}">
+                    <td>
+                        <a ng-click="showEditDialog($event, item, $index);">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a ng-click="deleteStore($event, item, $index);">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-click="gotoStore(item)">{{item.UUID}}</a>
+                    </td>
+                    <td>
+                        <a ng-click="gotoStore(item)">{{item.Name}}</a>
+                    </td>
+                    <td>{{item.Address}}</td>
+                    <td>{{item.ContactNumber}}</td>
+                    <td>{{item.DateAdded | date: 'dd-MM-yyyy'}}</td>
+                    <td>{{item.DateModified | date: 'dd-MM-yyyy'}}</td>
+                </tr>
+            </tbody>
+            <tfoot ng-show="global.listStore.length > 0">
+                <tr>
+                    <th>Action</th>
+                    <th>UUID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact Number</th>
+                    <th>Date Added</th>
+                    <th>Date Modified</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.box-body -->
+</div>

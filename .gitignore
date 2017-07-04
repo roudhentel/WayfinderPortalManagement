@@ -1,0 +1,8 @@
+# Ignored files
+
+# dependencies
+node_modules
+
+server/files
+
+public/assets/images/stores/*

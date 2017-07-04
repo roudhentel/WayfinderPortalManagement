@@ -1,0 +1,24 @@
+<dialog-template title="{{header}}" add-class="add-aisle-dialog">
+    <div class="body">
+        <div class="content">
+            <div class="map-container-dialog">
+                <svg id="svg-aisle" preserveAspectRatio="xMaxYMax">
+                </svg>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <form name="aisleForm">
+                <div class="pull-left aisle-details">
+                    <select name="selectObject" ng-model="selectedObject" ng-change="changeSelectedType(selectedObject)">
+                    <option value="1">Round</option>
+                    <option value="2">Rectangle</option>
+                    <option value="3">Polygon</option>
+                </select>
+                    <label for="aisleDescription">Description : </label>
+                    <input type="text" name="aisleDescription" ng-model="aisle.Description" required/>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="addAisle(aisleForm.$valid, $event);">Save</button>
+            </form>
+        </div>
+    </div>
+</dialog-template>
